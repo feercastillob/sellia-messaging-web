@@ -1,73 +1,77 @@
-# .
+Sellia Omnichannel Messaging App - Reto Técnico Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Este proyecto es la solución al Take-Home Coding Challenge para el perfil de Desarrollador Frontend. La aplicación rediseña la plataforma de mensajería omnicanal de Sellia, priorizando la accesibilidad, la ergonomía visual y la adaptabilidad (responsive) para usuarios B2B.
 
-## Recommended IDE Setup
+Stack Tecnológico
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Framework: Vue 3 (Composition API & <script setup>)
 
-## Recommended Browser Setup
+Estilos: Tailwind CSS (con soporte para Modo Oscuro/Claro basado en clases)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Bundler: Vite
 
-## Type Support for `.vue` Imports in TS
+Testing: Vitest & Vue Test Utils (Testing Library)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Análisis de código: ESLint
 
-## Customize configuration
+Formato: Prettier
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Estructura del Proyecto
 
-## Project Setup
+Se ha optado por una arquitectura modular, siguiendo el patrón Atomic Design para facilitar la escalabilidad, la reutilización de componentes y la implementación de pruebas unitarias.
 
-```sh
+src/components/atoms: Componentes UI básicos (Botones, Inputs, Toggle de Tema).
+
+src/components/molecules: Combinaciones de átomos (e.g., Formulario de Login, Item de la Lista de Clientes).
+
+src/components/organisms: Secciones complejas (e.g., Panel Lateral de Clientes, Ventana de Conversación).
+
+src/views/: Contenedores o páginas completas (e.g., Login, MainLayout).
+
+src/composables/: Lógica reutilizable (e.g., useAuth, useTheme).
+
+src/services/: Capa de abstracción para el consumo de APIs.
+
+Scripts Disponibles
+
+Para ejecutar el proyecto:
+
+Comando
+
+Descripción
+
 npm install
-```
 
-### Compile and Hot-Reload for Development
+Instala todas las dependencias del proyecto.
 
-```sh
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
+Inicia el servidor de desarrollo con hot-reloading.
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
 npm run build
 
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
+Genera los archivos de producción en la carpeta dist.
 
-### Lint with [ESLint](https://eslint.org/)
+npm run preview
 
-```sh
+Previsualiza la build de producción localmente.
+
+npm run test
+
+Ejecuta las pruebas unitarias con Vitest.
+
 npm run lint
-```
+
+Ejecuta ESLint para verificar errores de código.
+
+npm run format
+
+Formatea el código con Prettier.
+
+Credenciales de Acceso Fijas
+
+Para la ventana de Login, se usan las siguientes credenciales simuladas:
+
+Usuario: admin
+
+Contraseña: admin123

@@ -1,12 +1,33 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["src/**/__tests__/*"],
+  "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
 
+    /* Configuraciones de compilación */
+    "moduleResolution": "node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Configuración de rutas (CLAVE para el error TS2307) */
+    "baseUrl": ".",
     "paths": {
+      // Esto mapea '@/' a la carpeta 'src/' para que el editor pueda resolver las importaciones
       "@/*": ["./src/*"]
     }
-  }
+  },
+
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

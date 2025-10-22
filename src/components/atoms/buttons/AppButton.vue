@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed } from 'vue';
-  import IconSpinner from '../icons/IconSpinner.vue';
+  // import IconSpinner from '../icons/IconSpinner.vue';
 
   type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'naked';
   type ButtonSize = 'sm' | 'md' | 'lg';

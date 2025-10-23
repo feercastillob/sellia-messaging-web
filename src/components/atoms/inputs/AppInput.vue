@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue';
-  import { Eye, EyeOff } from 'lucide-vue-next'; // 👈 íconos (instálalos si aún no los tienes)
+  import { Eye, EyeOff } from 'lucide-vue-next';
 
   type InputState = 'error' | 'success' | 'disabled' | null;
 
@@ -52,19 +52,22 @@
 
   const inputId = computed(() => `input-${props.label.replace(/\s+/g, '-').toLowerCase()}`);
 
+  // 🧠 Usa las variables de color definidas en tu paleta
   const stateClasses = computed(() => {
     const base =
-      'border rounded-lg w-full p-3 pr-10 text-sm shadow-sm transition-all duration-200 focus:outline-none text-text-default placeholder-text-secondary';
+      'border rounded-lg w-full p-3 pr-10 text-sm shadow-sm transition-all duration-200 focus:outline-none text-text placeholder-text-secondary';
+
     if (props.disabled || props.state === 'disabled') {
       return `${base} bg-bg-surface border-border text-text-secondary cursor-not-allowed opacity-60`;
     }
+
     switch (props.state) {
       case 'error':
-        return `${base} bg-red-50 border-error ring-1 ring-error focus:ring-error`;
+        return `${base} bg-[color-mix(in srgb, var(--color-error) 10%, var(--color-bg))] border-error ring-1 ring-error focus:ring-error`;
       case 'success':
-        return `${base} bg-green-50 border-success ring-1 ring-success focus:ring-success`;
+        return `${base} bg-[color-mix(in srgb, var(--color-success) 10%, var(--color-bg))] border-success ring-1 ring-success focus:ring-success`;
       default:
-        return `${base} bg-bg-surface border-border focus:border-primary-light focus:ring-1 focus:ring-primary-light`;
+        return `${base} bg-bg-surface border-border focus:border-primary-light focus:ring-1 focus:ring-primary-light dark:focus:border-primary-dark`;
     }
   });
 </script>
@@ -74,6 +77,7 @@
     <label :for="inputId" class="text-sm font-medium text-text-default select-none">
       {{ label }}
     </label>
+
     <div class="relative">
       <input
         :id="inputId"
@@ -85,6 +89,7 @@
         :aria-describedby="message ? `${inputId}-message` : undefined"
         :class="stateClasses"
       />
+
       <button
         v-if="props.type === 'password'"
         type="button"
@@ -110,13 +115,3 @@
     </p>
   </div>
 </template>
-
-<style scoped>
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    transition: background-color 9999s ease-in-out 0s;
-    -webkit-text-fill-color: var(--color-text) !important;
-  }
-</style>

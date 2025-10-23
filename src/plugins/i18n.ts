@@ -13,7 +13,7 @@ const messages = {
       required: 'Por favor, ingrese correo electrónico y contraseña.',
       testCreds: 'Credenciales de prueba: admin / admin123',
       invalidEmail: 'Por favor ingresa un correo válido.',
-      invalidCredentials: 'Credenciales incorrectas. Intenta nuevamente.'
+      invalidCredentials: 'Credenciales incorrectas. Intenta nuevamente.',
     },
   },
   en: {
@@ -29,7 +29,7 @@ const messages = {
       invalid: 'Incorrect credentials. (admin/admin123)',
       testCreds: 'Test credentials: admin / admin123',
       invalidEmail: 'Please enter a valid email.',
-      invalidCredentials: 'Invalid credentials. Try again.'
+      invalidCredentials: 'Invalid credentials. Try again.',
     },
   },
 };

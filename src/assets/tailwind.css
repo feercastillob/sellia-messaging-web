@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   🎨 Sellia — Paleta Material Design 3 Adaptada
+   ============================================================ */
+
+@theme {
+  /* ===================  ROLES DE COLOR BASE  =================== */
+  --color-primary: #022ea8; /* Blue-600 */
+  --color-on-primary: #ffffff; /* Texto sobre primary */
+  --color-white: #ffffff; /* Texto sobre primary */
+  --color-primary-container: #dbeafe; /* Fondo sutil relacionado */
+  --color-on-primary-container: #0f172a;
+
+  --color-secondary: #64748b; /* Slate-500 */
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e2e8f0;
+  --color-on-secondary-container: #1e293b;
+
+  --color-error: #ef4444;
+  --color-on-error: #ffffff;
+  --color-error-container: #fee2e2;
+  --color-on-error-container: #7f1d1d;
+
+  --color-success: #10b981;
+  --color-on-success: #ffffff;
+  --color-success-container: #d1fae5;
+  --color-on-success-container: #064e3b;
+
+  /* ===================  SUPERFICIES Y TEXTO (MODO CLARO)  =================== */
+  --color-background: #f9fafb; /* Fondo general */
+  --color-surface: #ffffff; /* Paneles y tarjetas */
+  --color-surface-variant: #f3f4f6; /* Diferenciación sutil */
+  --color-on-surface: #111827; /* Texto principal */
+  --color-on-surface-variant: #4b5563; /* Texto secundario */
+  --color-outline: #d1d5db; /* Bordes y divisores */
+
+  /* ===================  CANALES / ESTADOS  =================== */
+  --color-channel-email: #6366f1; /* Indigo-500 */
+  --color-channel-chat: #ef4444; /* Red-500 */
+
+  /* ===================  TIPO Y ESPACIADO  =================== */
+  --font-sans: 'Inter', 'Roboto', system-ui, sans-serif;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   🌙 MODO OSCURO — Adaptación Material Design
+   ============================================================ */
+
+@layer base {
+  .dark {
+    --color-primary: #60a5fa; /* Blue-400 */
+    --color-on-primary: #0f172a;
+    --color-white: #ffffff; /* Texto sobre primary */
+    --color-primary-container: #1e3a8a;
+    --color-on-primary-container: #dbeafe;
+
+    --color-secondary: #94a3b8;
+    --color-on-secondary: #0f172a;
+    --color-secondary-container: #334155;
+    --color-on-secondary-container: #e2e8f0;
+
+    --color-error: #f87171;
+    --color-on-error: #450a0a;
+    --color-error-container: #7f1d1d;
+    --color-on-error-container: #fee2e2;
+
+    --color-success: #34d399;
+    --color-on-success: #064e3b;
+    --color-success-container: #065f46;
+    --color-on-success-container: #a7f3d0;
+
+    --color-background: #111827; /* gray-900 */
+    --color-surface: #1f2937; /* gray-800 */
+    --color-surface-variant: #374151; /* gray-700 */
+    --color-on-surface: #ffffff;
+    --color-on-surface-variant: #9ca3af;
+    --color-outline: #4b5563;
+
+    --color-channel-email: #818cf8; /* Indigo-400 */
+    --color-channel-chat: #f87171; /* Red-400 */
+  }
+}
+
+/* Transiciones suaves entre temas */
+html {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}

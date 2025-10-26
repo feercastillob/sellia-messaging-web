@@ -1,9 +1,8 @@
 <template>
   <div
     :class="[
-      'flex items-center justify-center rounded-full font-semibold uppercase select-none transition-all duration-300',
-      bgColor || 'bg-[var(--color-primary)] text-white',
-      'shadow-sm]',
+      'flex items-center justify-center rounded-full font-semibold uppercase shadow-sm transition-all duration-300 select-none',
+      backgroundClass,
       sizeClass,
     ]"
   >
@@ -20,7 +19,7 @@
     size?: 'sm' | 'md' | 'lg';
   }>();
 
-  const initial = computed(() => props.name.charAt(0).toUpperCase());
+  const initial = computed(() => props.name?.charAt(0).toUpperCase() ?? '?');
 
   const sizeClass = computed(() => {
     switch (props.size) {
@@ -31,5 +30,9 @@
       default:
         return 'w-10 h-10 text-base';
     }
+  });
+  const backgroundClass = computed(() => {
+    if (props.bgColor) return props.bgColor;
+    return 'bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary';
   });
 </script>

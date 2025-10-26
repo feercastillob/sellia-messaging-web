@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex items-center justify-center select-none transition-all duration-300"
+    class="flex items-center justify-center transition-all duration-300 select-none"
     aria-label="Sellia Logo"
   >
     <img
       :src="currentLogo"
       alt="Sellia Logo"
-      class="h-10 w-auto transition-transform duration-500 hover:scale-105 drop-shadow-sm"
+      class="h-10 w-auto drop-shadow-sm transition-transform duration-500 hover:scale-105"
       draggable="false"
     />
   </div>

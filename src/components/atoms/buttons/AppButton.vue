@@ -16,22 +16,46 @@
   const emit = defineEmits(['click']);
 
   const baseClasses =
-    'inline-flex items-center justify-center font-medium rounded-lg shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    'inline-flex items-center justify-center font-medium rounded-lg shadow-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   const variantClasses = computed(() => {
     switch (props.variant) {
       case 'secondary':
-        return 'bg-bg-surface text-text-secondary border border-border hover:bg-bg-bubble-client focus:ring-primary-light';
+        return `
+        bg-secondary text-on-secondary
+        hover:bg-secondary-container
+        dark:bg-secondary-container dark:text-on-secondary-container
+        focus:ring-secondary/40
+      `;
+
       case 'danger':
-        return 'bg-error text-white hover:bg-[color-mix(in srgb, var(--color-error) 85%, black)] focus:ring-error/40';
+        return `
+        bg-error text-white
+        hover:bg-[color-mix(in srgb, var(--color-error) 85%, black)]
+        dark:bg-error-container dark:text-on-error-container
+        focus:ring-error/40
+      `;
+
       case 'naked':
-        return 'bg-transparent text-primary hover:text-primary-dark focus:ring-0';
+        return `
+        bg-transparent text-primary
+        hover:text-primary-dark
+        dark:text-on-primary-container
+        dark:hover:text-primary-light
+        focus:ring-0
+      `;
+
       case 'primary':
       default:
-        return 'bg-blue-900 text-white hover:bg-primary-dark focus:ring-primary-light';
+        return `
+        bg-primary text-white
+        hover:bg-primary-container
+        dark:bg-primary-container
+        dark:hover:bg-primary-container
+        focus:ring-primary/40
+      `;
     }
   });
-
   const sizeClasses = computed(() => {
     switch (props.size) {
       case 'sm':
@@ -42,9 +66,8 @@
         return 'px-4 py-2 text-base';
     }
   });
-
   const stateClasses = computed(() => {
-    return props.disabled || props.loading ? 'opacity-60 cursor-not-allowed' : '';
+    return props.disabled || props.loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer';
   });
 
   const handleClick = (event: MouseEvent) => {

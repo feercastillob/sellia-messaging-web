@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-end mt-1 space-x-1 text-[10px] opacity-70">
+  <div class="mt-1 flex items-center justify-end space-x-1 text-[10px] opacity-70">
     <span>{{ formattedTime }}</span>
 
     <span v-if="status" class="ml-1">

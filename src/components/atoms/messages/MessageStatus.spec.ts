@@ -11,7 +11,7 @@ describe('MessageStatus.vue', () => {
     });
 
     const timeText = wrapper.find('span').text();
-    expect(timeText).toMatch(/\d{1,2}:\d{2}/); // formato HH:MM
+    expect(timeText).toMatch(/\d{1,2}:\d{2}/);
   });
 
   it('shows single check for sent status', () => {

@@ -1,14 +1,13 @@
-import axios, { type AxiosInstance, type AxiosError } from 'axios';
+import axios, { type AxiosError } from 'axios';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-const api: AxiosInstance = axios.create({
+const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 🧠 Interceptores globales
 api.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
@@ -38,7 +37,12 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
+
+export async function getData<T>(url: string): Promise<T> {
+  const { data } = await api.get<T>(url);
+  return data;
+}
 
 export default api;

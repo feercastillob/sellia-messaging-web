@@ -40,7 +40,7 @@ describe('AppInput.vue', () => {
       wrapper
         .find('input')
         .classes()
-        .some((c) => c.includes('border-error'))
+        .some((c) => c.includes('border-error')),
     ).toBe(true);
 
     await wrapper.setProps({ state: 'success' });
@@ -48,7 +48,7 @@ describe('AppInput.vue', () => {
       wrapper
         .find('input')
         .classes()
-        .some((c) => c.includes('border-success'))
+        .some((c) => c.includes('border-success')),
     ).toBe(true);
 
     await wrapper.setProps({ state: 'disabled' });
@@ -62,12 +62,8 @@ describe('AppInput.vue', () => {
 
     const button = wrapper.find('button');
     const input = wrapper.find('input');
-
-    // Inicialmente debe estar oculto (password)
     expect(input.attributes('type')).toBe('password');
     expect(wrapper.findComponent(Eye).exists()).toBe(true);
-
-    // Click para mostrar contraseña
     await button.trigger('click');
     expect(wrapper.findComponent(EyeOff).exists()).toBe(true);
     expect(input.attributes('type')).toBe('text');

@@ -33,23 +33,13 @@ if (
 } else {
   document.documentElement.classList.remove('dark');
 }
-// 1. Usar glob para escanear todos los archivos .vue dentro de src/components
-// El parámetro 'eager' hace que la importación sea síncrona,
-// lo cual es ideal para componentes pequeños o globales.
 const components = import.meta.glob('./components/**/*.vue', { eager: true });
-// 2. Iterar sobre las importaciones y registrar cada componente
 for (const path in components) {
-  // 1. Define el tipo esperado para la configuración del componente
   const componentConfig = components[path] as { default: Component };
-  //    ^ Aquí le decimos a TypeScript: "Confía en mí, este objeto tiene una propiedad 'default' que es un Componente de Vue."
-
   const componentName = path
     .split('/')
     .pop()!
     .replace(/\.\w+$/, '');
-
-  // 2. Usar 'componentConfig.default' directamente
   app.component(componentName, componentConfig.default);
 }
-
 app.mount('#app');

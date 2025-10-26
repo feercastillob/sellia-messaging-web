@@ -26,9 +26,7 @@ export default defineConfig({
     include: ['@tailwindcss/vite', '@fontsource-variable/inter'],
     exclude: [
       '@tailwindcss/oxide',
-      // Agrega otras plataformas si también están causando problemas
       '@tailwindcss/oxide-win32-x64-msvc',
-      // Excluye también lightningcss por si acaso, aunque su error es diferente
       'lightningcss',
     ],
   },

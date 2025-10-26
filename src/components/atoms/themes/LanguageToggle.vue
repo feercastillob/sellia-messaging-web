@@ -1,23 +1,25 @@
 <template>
   <button
-    @click="toggleLanguage"
-    class="relative overflow-hidden flex items-center justify-center w-20 h-9 rounded-full border border-border-default bg-bg-surface hover:bg-bg-bubble transition-all duration-300 text-sm font-medium text-text-default"
+    class="border-outline bg-on-primary hover:bg-surface-variant focus:ring-primary dark:border-outline dark:bg-surface dark:hover:bg-surface-variant dark:focus:ring-primary dark:focus:ring-offset-background relative flex h-9 w-20 items-center justify-center overflow-hidden rounded-full border shadow-sm transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:outline-none"
     aria-label="Cambiar idioma"
+    @click="toggleLanguage"
   >
-    <transition name="fade" mode="out-in">
+    <transition mode="out-in" name="fade">
       <div :key="language" class="absolute inset-0 flex items-center justify-center gap-2">
         <img
-          :src="language === 'es' ? flagEs : flagEn"
+          class="h-5 w-5 rounded-full object-cover shadow-sm"
           :alt="language === 'es' ? 'Español' : 'English'"
-          class="w-5 h-5 rounded-full object-cover shadow-sm"
+          :src="language === 'es' ? flagEs : flagEn"
         />
-        <span class="hidden sm:inline">{{ language.toUpperCase() }}</span>
+        <span class="text-on-surface dark:text-on-surface hidden transition-colors sm:inline">
+          {{ language.toUpperCase() }}
+        </span>
       </div>
     </transition>
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
   import { ref, onMounted, watch } from 'vue';
   import { useI18n } from 'vue-i18n';
 
@@ -49,11 +51,13 @@
     locale.value = val;
   });
 </script>
+
 <style scoped>
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.25s ease;
   }
+
   .fade-enter-from,
   .fade-leave-to {
     opacity: 0;

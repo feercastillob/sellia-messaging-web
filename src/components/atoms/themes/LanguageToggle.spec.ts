@@ -31,7 +31,7 @@ describe('LanguageToggle.vue', () => {
       global: { plugins: [i18n] },
     });
 
-    await wrapper.vm.$nextTick(); // esperar que onMounted corra
+    await wrapper.vm.$nextTick();
 
     const locale = (i18n.global as unknown as Composer).locale.value;
     expect(locale).toBe('es');

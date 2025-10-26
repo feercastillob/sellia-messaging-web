@@ -3,12 +3,6 @@
   import { useRouter } from 'vue-router';
   import { useI18n } from 'vue-i18n';
 
-  import LoginHeader from '@/components/atoms/auth/LoginHeader.vue';
-  import LoginFields from '@/components/molecules/login/LoginFields.vue';
-  import LoginFooter from '@/components/atoms/auth/LoginFooter.vue';
-  import AppButton from '@/components/atoms/buttons/AppButton.vue';
-  import AppDialog from '@/components/atoms/dialogs/AppDialog.vue';
-
   const emit = defineEmits<{ (e: 'login', status: boolean): void }>();
   const { t } = useI18n();
   const router = useRouter();

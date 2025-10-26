@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-  import AvatarLetter from '@/components/atoms/avatars/AvatarLetter.vue';
   import type { Client } from '@/types';
 
   defineProps<{

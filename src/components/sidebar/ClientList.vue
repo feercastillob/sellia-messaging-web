@@ -25,7 +25,6 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia';
   import { useClientsStore } from '@/stores/clients';
-  import ClientItem from '@/components/sidebar/ClientItem.vue';
 
   const clientsStore = useClientsStore();
   const { clients, activeClientId, loading, error } = storeToRefs(clientsStore);

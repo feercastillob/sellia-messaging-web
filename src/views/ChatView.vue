@@ -25,9 +25,6 @@
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
-  import ClientList from '@/components/sidebar/ClientList.vue';
-  import ChatView from '@/components/chat/ChatView.vue';
-  import ThemeToggle from '@/components/atoms/themes/ThemeToggle.vue';
   import { useClientsStore } from '@/stores/clients';
   import {
     startMessageSimulation,

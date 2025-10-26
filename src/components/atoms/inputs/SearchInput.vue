@@ -17,7 +17,6 @@
 
 <script setup lang="ts">
   import { computed } from 'vue';
-  import SearchIcon from '@/components/atoms/icons/SearchIcon.vue';
 
   const props = defineProps<{
     modelValue: string;

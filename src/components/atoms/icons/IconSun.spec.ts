@@ -31,7 +31,7 @@ describe('IconSun.vue', () => {
     expect(path.attributes('stroke-linejoin')).toBe('round');
     expect(path.attributes('stroke-width')).toBe('2');
     expect(path.attributes('d')).toBe(
-      'M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0L15.95 6.05M6.05 17.95l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z'
+      'M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0L15.95 6.05M6.05 17.95l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z',
     );
   });
 });

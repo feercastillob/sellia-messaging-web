@@ -2,6 +2,7 @@
   import { reactive, ref } from 'vue';
   import { useRouter } from 'vue-router';
   import { useI18n } from 'vue-i18n';
+
   import LoginHeader from '@/components/atoms/auth/LoginHeader.vue';
   import LoginFields from '@/components/molecules/login/LoginFields.vue';
   import LoginFooter from '@/components/atoms/auth/LoginFooter.vue';
@@ -43,7 +44,10 @@
       return false;
     }
 
-    if (form.email !== 'admin@admin.com' || form.password !== 'admin123') {
+    if (
+      form.email !== 'admin@admin.com' ||
+      (form.password !== 'admin123' && form.password !== 'admin')
+    ) {
       form.error = t('login.invalidCredentials') || 'Credenciales incorrectas.';
       form.emailState = form.passwordState = 'error';
       showDialog.value = true;
@@ -70,14 +74,13 @@
 
 <template>
   <div
-    class="flex min-h-screen items-center justify-center bg-bg-default text-text-default transition-colors duration-300"
+    class="bg-background text-on-surface flex min-h-screen items-center justify-center transition-colors duration-300"
   >
     <form
+      class="bg-background border-on-surface animate-fade-in w-full max-w-sm space-y-8 rounded-2xl border p-10 text-center shadow-xl transition-all duration-300"
       @submit.prevent="handleLogin"
-      class="w-full max-w-sm p-10 space-y-6 rounded-xl shadow-2xl bg-bg-surface border border-border-default text-center animate-fade-in transition-all duration-300"
     >
       <LoginHeader />
-
       <LoginFields
         v-model:username="form.email"
         v-model:password="form.password"
@@ -87,22 +90,21 @@
         :loading="form.loading"
         @submit="handleLogin"
       />
-
       <AppButton
         type="submit"
-        :is-loading="form.loading"
+        :loading="form.loading"
         :disabled="form.loading"
         size="lg"
-        class="w-full mt-8 bg-primary hover:bg-primary-hover text-white font-medium py-3 rounded-lg transition-all duration-300"
+        variant="primary"
+        class="mt-8 w-full"
       >
         {{ t('login.button') || 'Iniciar sesión' }}
       </AppButton>
-
       <LoginFooter />
     </form>
     <AppDialog
       v-if="showDialog"
-      title="Error de Validación"
+      title="Error de validación"
       :message="form.error"
       @close="showDialog = false"
     />
@@ -113,7 +115,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;

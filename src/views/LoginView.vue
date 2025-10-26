@@ -12,7 +12,6 @@
   const router = useRouter();
 
   const onLoginSuccess = () => {
-    console.log('✅ Usuario autenticado correctamente');
     router.push('/dashboard');
   };
 </script>

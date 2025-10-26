@@ -5,18 +5,12 @@
 
 <template>
   <footer
-    class="pt-6 text-center md:text-left text-xs text-text-secondary transition-colors duration-300"
+    class="text-on-surface-variant w-full rounded-b-lg py-6 text-xs transition-colors duration-300 md:text-left"
   >
-    <p class="leading-relaxed text-center tracking-wide">
+    <p
+      class="text-on-surface-variant mx-auto max-w-md text-center font-sans leading-relaxed tracking-wide md:mx-0"
+    >
       {{ t('login.testCreds') }}
     </p>
   </footer>
 </template>
-
-<style scoped>
-  footer {
-    color: var(--color-text-secondary);
-    font-family: var(--font-family-secondary, 'Roboto', sans-serif);
-    line-height: 1.5;
-  }
-</style>

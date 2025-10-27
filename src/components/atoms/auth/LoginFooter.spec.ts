@@ -6,7 +6,7 @@ import LoginFooter from '@/components/atoms/auth/LoginFooter.vue';
 const messages = {
   en: {
     login: {
-      testCreds: 'Use test credentials: user@test.com / 123456',
+      testCreds: 'Use test credentials: {user} / {pass}',
     },
   },
 };
@@ -25,21 +25,21 @@ describe('LoginFooter.vue', () => {
     });
   };
 
-  it('renderiza correctamente el texto traducido', () => {
+  it('renders the translated text correctly', () => {
     const wrapper = mountWithI18n();
     expect(wrapper.text()).toContain('Use test credentials');
   });
 
-  it('tiene las clases de estilo esperadas', () => {
+  it('applies the expected style classes', () => {
     const wrapper = mountWithI18n();
     const footer = wrapper.find('footer');
 
-    expect(footer.classes()).toContain('pt-6');
-    expect(footer.classes()).toContain('text-text-secondary');
+    expect(footer.classes()).toContain('py-6');
+    expect(footer.classes()).toContain('text-on-surface-variant');
     expect(footer.classes()).toContain('transition-colors');
   });
 
-  it('usa la etiqueta <footer> con un <p> interno', () => {
+  it('uses a <footer> tag containing a <p> element', () => {
     const wrapper = mountWithI18n();
     expect(wrapper.find('footer').exists()).toBe(true);
     expect(wrapper.find('p').exists()).toBe(true);

@@ -50,8 +50,8 @@ describe('AppButton', () => {
   it('applies secondary variant correctly', () => {
     const wrapper = mountComponent({ variant: 'secondary' });
     const classes = wrapper.classes().join(' ');
-    expect(classes).toMatch(/border-border/);
-    expect(classes).toMatch(/text-text-secondary/);
+    expect(classes).toMatch(/bg-secondary/);
+    expect(classes).toMatch(/text-on-secondary/);
   });
 
   it('applies danger variant correctly', () => {

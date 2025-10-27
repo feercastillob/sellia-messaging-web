@@ -19,7 +19,10 @@
     size?: 'sm' | 'md' | 'lg';
   }>();
 
-  const initial = computed(() => props.name?.charAt(0).toUpperCase() ?? '?');
+  const initial = computed(() => {
+    const firstChar = props.name?.trim().charAt(0).toUpperCase();
+    return firstChar || '?';
+  });
 
   const sizeClass = computed(() => {
     switch (props.size) {
@@ -31,6 +34,7 @@
         return 'w-10 h-10 text-base';
     }
   });
+
   const backgroundClass = computed(() => {
     if (props.bgColor) return props.bgColor;
     return 'bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary';

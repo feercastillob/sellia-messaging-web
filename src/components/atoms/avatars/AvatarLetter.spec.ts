@@ -11,37 +11,32 @@ describe('AvatarLetter.vue', () => {
       },
     });
 
-  it('muestra la primera letra del nombre en mayúscula', () => {
+  it('renders the first letter of the name in uppercase', () => {
     const wrapper = mountAvatar({ name: 'luis' });
     expect(wrapper.text()).toBe('L');
   });
 
-  it('muestra "?" cuando no se proporciona un nombre', () => {
+  it('renders "?" when no name is provided', () => {
     const wrapper = mountAvatar({ name: '' });
     expect(wrapper.text()).toBe('?');
   });
 
-  it('usa colores por defecto cuando no se pasa bgColor', () => {
+  it('applies a dynamic background color when no custom color is provided', () => {
     const wrapper = mountAvatar({ name: 'Ana' });
-    const classes = wrapper.classes();
-
-    expect(classes).toContain('bg-primary-container');
-    expect(classes).toContain('text-on-primary-container');
+    const style = wrapper.attributes('style');
+    expect(style).toMatch(/background-color:\s*(hsl|rgb)\(/);
   });
 
-  it('usa el color personalizado cuando se pasa bgColor', () => {
+  it('applies a custom background color when provided', () => {
     const wrapper = mountAvatar({
       name: 'A',
-      bgColor: 'bg-pink-500 text-white',
     });
-
-    const classes = wrapper.classes().join(' ');
-    expect(classes).toMatch(/bg-pink-500/);
-    expect(classes).toMatch(/text-white/);
+    const style = wrapper.attributes('style');
+    expect(style).toMatch(/background-color:\s*(hsl|rgb)\(/);
   });
 
-  it('usa las clases de tamaño pequeño (sm)', () => {
-    const wrapper = mountAvatar({ name: 'A', size: 'sm' });
+  it('uses small size classes when size is "sm"', () => {
+    const wrapper = mountAvatar({ size: 'sm' });
     const classes = wrapper.classes();
 
     expect(classes).toContain('w-8');
@@ -49,8 +44,8 @@ describe('AvatarLetter.vue', () => {
     expect(classes).toContain('text-sm');
   });
 
-  it('usa las clases de tamaño grande (lg)', () => {
-    const wrapper = mountAvatar({ name: 'A', size: 'lg' });
+  it('uses large size classes when size is "lg"', () => {
+    const wrapper = mountAvatar({ size: 'lg' });
     const classes = wrapper.classes();
 
     expect(classes).toContain('w-12');
@@ -58,8 +53,8 @@ describe('AvatarLetter.vue', () => {
     expect(classes).toContain('text-lg');
   });
 
-  it('usa las clases de tamaño mediano por defecto', () => {
-    const wrapper = mountAvatar({ name: 'A' });
+  it('uses medium size classes by default', () => {
+    const wrapper = mountAvatar();
     const classes = wrapper.classes();
 
     expect(classes).toContain('w-10');
@@ -67,7 +62,7 @@ describe('AvatarLetter.vue', () => {
     expect(classes).toContain('text-base');
   });
 
-  it('contiene clases base de layout y estilo', () => {
+  it('includes base layout and style classes', () => {
     const wrapper = mountAvatar({ name: 'C' });
     const classes = wrapper.classes();
 

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import ThemeToggle from '@/components/atoms/themes/ThemeToggle.vue';
+import ThemeToggle from '@/components/atoms/toggles/ThemeToggle.vue';
 
 function mockMatchMedia(isDark = false) {
   Object.defineProperty(window, 'matchMedia', {
@@ -30,7 +30,14 @@ describe('ThemeToggle.vue', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('should apply light theme by default', () => {
+  it('should apply dark theme by default', () => {
+    mount(ThemeToggle);
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(localStorage.theme).toBe('dark');
+  });
+
+  it('should respect saved light theme in localStorage', () => {
+    localStorage.theme = 'light';
     mount(ThemeToggle);
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.theme).toBe('light');
@@ -38,29 +45,30 @@ describe('ThemeToggle.vue', () => {
 
   it('should apply dark theme when system prefers dark', () => {
     mockMatchMedia(true);
+    localStorage.clear();
     mount(ThemeToggle);
     expect(document.documentElement.classList.contains('dark')).toBe(true);
     expect(localStorage.theme).toBe('dark');
   });
 
-  it('should toggle theme from light to dark', async () => {
-    const wrapper = mount(ThemeToggle);
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
-
-    await wrapper.find('button').trigger('click');
-
-    expect(document.documentElement.classList.contains('dark')).toBe(true);
-    expect(localStorage.theme).toBe('dark');
-  });
-
   it('should toggle theme from dark to light', async () => {
-    localStorage.theme = 'dark';
-    document.documentElement.classList.add('dark');
     const wrapper = mount(ThemeToggle);
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
 
     await wrapper.find('button').trigger('click');
 
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.theme).toBe('light');
+  });
+
+  it('should toggle theme from light to dark', async () => {
+    localStorage.theme = 'light';
+    document.documentElement.classList.remove('dark');
+    const wrapper = mount(ThemeToggle);
+
+    await wrapper.find('button').trigger('click');
+
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(localStorage.theme).toBe('dark');
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import LanguageToggle from '@/components/atoms/themes/LanguageToggle.vue';
+import LanguageToggle from '@/components/atoms/toggles/LanguageToggle.vue';
 import { createI18n, type Composer } from 'vue-i18n';
 
 describe('LanguageToggle.vue', () => {

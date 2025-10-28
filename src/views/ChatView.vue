@@ -23,10 +23,8 @@
 
 <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue';
-  import { useRouter } from 'vue-router';
   import { useClientsStore } from '@/stores/clients';
 
-  const router = useRouter();
   const store = useClientsStore();
   const searchQuery = ref('');
 
@@ -40,8 +38,4 @@
       client.name.toLowerCase().includes(searchQuery.value.toLowerCase()),
     );
   });
-
-  const logout = () => {
-    router.push('/');
-  };
 </script>

@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind",
+    "antfu.icons-carbon",
+    "PKief.material-icon-theme",
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    "yoavbls.pretty-ts-errors",
+    "streetsidesoftware.code-spell-checker",
+    "eamodio.gitlens",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "oxc.oxc-vscode"
+  ]
+}

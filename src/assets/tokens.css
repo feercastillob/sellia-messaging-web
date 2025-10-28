@@ -1,0 +1,53 @@
+@layer base {
+  :root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --error: #ef4444;
+    --success: #10b981;
+
+    --surface: #ffffff;
+    --surface-variant: #f9fafb;
+    --surface-secondary: #f3f4f6;
+    --text: #111827;
+    --text-secondary: #4b5563;
+    --border: #d1d5db;
+    --bubble-client: #e5e7eb;
+    --bubble-user: var(--primary);
+
+    --elevation-0: none;
+    --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --elevation-2: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --elevation-3: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --elevation-4: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+
+    --transition-fast: 150ms ease-in-out;
+    --transition-medium: 250ms ease-in-out;
+  }
+  .dark {
+    --surface: #111827;
+    --surface-variant: #1f2937;
+    --surface-secondary: #2d3748;
+    --text: #ffffff;
+    --text-secondary: #9ca3af;
+    --border: #374151;
+    --bubble-client: #374151;
+    --bubble-user: var(--primary-hover);
+  }
+  [data-channel='email'] {
+    --channel-color: #6366f1;
+  }
+  [data-channel='chat'] {
+    --channel-color: #ef4444;
+  }
+}
+

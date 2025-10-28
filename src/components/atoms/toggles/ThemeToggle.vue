@@ -19,20 +19,21 @@
   import IconSun from '@/components/atoms/icons/IconSun.vue';
   import IconMoon from '@/components/atoms/icons/IconMoon.vue';
 
-  const isDark = ref(false);
+  const isDark = ref(true);
 
   onMounted(() => {
-    isDark.value =
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (localStorage.theme) {
+      isDark.value = localStorage.theme === 'dark';
+    } else {
+      isDark.value = true;
+      localStorage.theme = 'dark';
+    }
     applyTheme();
   });
-
   function toggleTheme() {
     isDark.value = !isDark.value;
     applyTheme();
   }
-
   function applyTheme() {
     const html = document.documentElement;
     if (isDark.value) {

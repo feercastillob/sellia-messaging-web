@@ -6,7 +6,10 @@
     aria-live="polite"
     aria-label="Mensajes del chat"
   >
-    <ChatBubble v-for="msg in activeMessages" :key="msg.id" :msg="msg" />
+    <template v-for="(msg, index) in activeMessages" :key="msg.id">
+      <ChatDateDivider v-if="shouldShowDateDivider(index)" :date="msg.createdAt" />
+      <ChatBubble :msg="msg" />
+    </template>
     <TypingIndicator v-if="isTyping" />
   </div>
 </template>
@@ -16,6 +19,7 @@
   import { storeToRefs } from 'pinia';
   import { useClientsStore } from '@/stores/clients';
   import ChatBubble from './ChatBubble.vue';
+  import ChatDateDivider from './ChatDateDivider.vue';
   import TypingIndicator from './TypingIndicator.vue';
   import { isTyping } from '@/services/messageSimulator';
 
@@ -24,6 +28,13 @@
   const { activeClient, messages } = storeToRefs(store);
 
   const activeMessages = computed(() => messages.value[activeClient.value?._id ?? ''] ?? []);
+
+  const shouldShowDateDivider = (index: number) => {
+    if (index === 0) return true;
+    const prev = new Date(activeMessages.value[index - 1].createdAt).toDateString();
+    const curr = new Date(activeMessages.value[index].createdAt).toDateString();
+    return prev !== curr;
+  };
 
   watch(
     [activeMessages, () => isTyping.value],

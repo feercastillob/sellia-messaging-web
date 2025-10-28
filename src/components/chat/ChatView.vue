@@ -1,13 +1,11 @@
 <template>
   <main
-    class="bg-bg-primary text-text-primary flex min-h-0 flex-1 flex-col"
+    class="bg-surface text-text-primary flex min-h-0 flex-1 flex-col"
     role="main"
     aria-label="Ventana de conversación"
   >
     <ChatHeader v-if="activeClient" :client="activeClient" />
-
     <ChatMessages v-if="activeClient" />
-
     <div
       v-else
       class="text-text-secondary flex flex-1 items-center justify-center px-4 text-center"
@@ -15,7 +13,6 @@
     >
       Selecciona un cliente para comenzar la conversación.
     </div>
-
     <MessageInput v-if="activeClient" class="shrink-0" />
   </main>
 </template>

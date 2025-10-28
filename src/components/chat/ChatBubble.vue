@@ -1,59 +1,43 @@
 <template>
-  <div :class="bubbleClasses">
-    <template v-if="msg.type === 'text'">
-      <p>{{ msg.text }}</p>
-
-      <div v-if="msg.buttons?.length" class="mt-3 flex flex-wrap gap-2">
-        <button
-          v-for="(btn, i) in msg.buttons"
-          :key="i"
-          type="button"
-          :aria-label="`Botón de mensaje: ${btn.text}`"
-          class="border-primary text-primary hover:bg-primary focus-visible:ring-primary rounded-lg border px-3 py-1.5 text-sm transition hover:text-white focus-visible:ring-2"
-        >
-          {{ btn.text }}
-        </button>
-      </div>
-    </template>
-
-    <template v-else-if="msg.type === 'image' && msg.multimedia">
-      <img
-        :src="msg.multimedia.file || msg.multimedia.thumbnail"
-        alt="Imagen del mensaje"
-        class="border-border max-w-[220px] rounded-lg border"
-      />
-    </template>
-
-    <template v-else-if="msg.type === 'video' && msg.multimedia">
-      <video
-        controls
-        class="border-border max-w-[260px] rounded-lg border"
-        aria-label="Video del mensaje"
-      >
-        <source :src="msg.multimedia.file" type="video/mp4" />
-        Tu navegador no soporta video.
-      </video>
-    </template>
-
-    <template v-else-if="msg.type === 'document' && msg.multimedia">
-      <a
-        :href="msg.multimedia.file"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="border-border bg-bg-secondary hover:bg-primary flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition hover:text-white"
-        :aria-label="`Abrir documento ${msg.multimedia.filename}`"
-      >
-        📄
-        <span class="truncate">{{ msg.multimedia.filename || 'Documento' }}</span>
-      </a>
-    </template>
-
-    <small
-      class="text-text-secondary mt-1 block text-right text-[11px] leading-none select-none"
-      aria-hidden="true"
+  <div :class="wrapperClasses">
+    <MessageText
+      v-if="msg.type === 'text'"
+      class="min-w-[20%] max-w-[70%] rounded-xl object-cover"
+      :msg="msg"
+      :formatted-date="formattedDate"
+    />
+    <div
+      v-else
+      :class="[
+        'relative max-w-[60%] min-w-[30%] overflow-hidden rounded-2xl shadow-md transition-all duration-200',
+        msg.typeUser === 'User'
+          ? 'bg-chat-bubble-user text-chat-bubble-user-text animate-chat-bubble-right ml-auto'
+          : 'bg-chat-bubble-client text-chat-bubble-client-text animate-chat-bubble-left mr-auto',
+      ]"
     >
-      {{ formattedDate }}
-    </small>
+      <span
+        v-if="msg.typeUser === 'User'"
+        class="bg-chat-bubble-user absolute -right-2 bottom-2 h-3 w-3 rotate-45"
+      ></span>
+      <span v-else class="bg-chat-bubble-client absolute bottom-2 -left-2 h-3 w-3 rotate-45"></span>
+
+      <div class="p-1.5">
+        <MessageImage
+          v-if="msg.type === 'image' && msg.multimedia"
+          :multimedia="msg.multimedia"
+          class="max-h-[200px] max-w-[250px] rounded-xl object-cover"
+        />
+        <MessageDocument
+          v-else-if="msg.type === 'document' && msg.multimedia"
+          :multimedia="msg.multimedia"
+        />
+      </div>
+      <MessageTime
+        :formatted-date="formattedDate"
+        :align="msg.typeUser === 'User' ? 'right' : 'left'"
+        class="px-2 pb-1 text-xs opacity-70"
+      />
+    </div>
   </div>
 </template>
 
@@ -63,24 +47,41 @@
 
   const props = defineProps<{ msg: Message }>();
 
-  const formattedDate = computed(() =>
-    new Date(props.msg.createdAt).toLocaleTimeString('es-MX', {
+  const formattedDate = computed(() => {
+    const date = new Date(props.msg.createdAt);
+    return date.toLocaleTimeString('es-MX', {
       hour: '2-digit',
       minute: '2-digit',
-    }),
-  );
+    });
+  });
 
-  const bubbleClasses = computed(() => {
-    const base = 'w-fit px-4 py-2.5 text-[15px] whitespace-pre-wrap shadow-sm leading-relaxed';
+  const wrapperClasses = computed(() => {
     switch (props.msg.typeUser) {
-      case 'Client':
-        return `${base} ml-auto bg-primary text-on-primary rounded-xl max-w-[70%]`;
       case 'User':
-        return `${base} mr-auto bg-surface text-on-surface rounded-xl max-w-[70%]`;
+        return 'flex justify-end';
+      case 'Client':
       case 'UserSystem':
-        return `${base} mx-auto bg-surface-variant text-text-secondary text-center text-xs rounded-lg max-w-[60%] px-3 py-1.5`;
+        return 'flex justify-start';
       default:
-        return `${base} mr-auto bg-surface text-on-surface rounded-xl max-w-[70%]`;
+        return 'flex justify-start';
     }
   });
 </script>
+
+<style scoped>
+  div[class*='bg-chat-bubble'] {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+  }
+
+  div[class*='bg-chat-bubble']:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  span.absolute {
+    border-radius: 0.2rem;
+  }
+</style>

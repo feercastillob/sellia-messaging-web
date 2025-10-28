@@ -26,8 +26,12 @@
   import { storeToRefs } from 'pinia';
   import { useClientsStore } from '@/stores/clients';
 
+  const { clients } = defineProps<{
+    clients: { _id: string; name: string }[];
+  }>();
+
   const clientsStore = useClientsStore();
-  const { clients, activeClientId, loading, error } = storeToRefs(clientsStore);
+  const { activeClientId, loading, error } = storeToRefs(clientsStore);
   const { setActiveClient } = clientsStore;
 
   function selectClient(id: string) {

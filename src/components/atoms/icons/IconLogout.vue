@@ -1,10 +1,36 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
-    />
-  </svg>
+  <button
+    class="border-outline bg-on-primary hover:bg-surface-variant focus:ring-primary dark:border-outline dark:bg-surface dark:hover:bg-surface-variant dark:focus:ring-primary dark:focus:ring-offset-background relative flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+    aria-label="Cerrar sesión"
+    @click="logout"
+  >
+    <transition name="fade" mode="out-in">
+      <LogOut key="logout" class="text-on-surface dark:text-on-surface h-5 w-5 transition-colors" />
+    </transition>
+  </button>
 </template>
+
+<script setup lang="ts">
+  import { useRouter } from 'vue-router';
+  import { LogOut } from 'lucide-vue-next';
+
+  const router = useRouter();
+
+  function logout() {
+    router.push('/');
+  }
+</script>
+
+<style scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+</style>

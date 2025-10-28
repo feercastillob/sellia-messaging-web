@@ -18,6 +18,6 @@
 </template>
 <script setup lang="ts">
   import AppLogo from '@/components/atoms/branding/AppLogo.vue';
-  import ThemeToggle from '@/components/atoms/themes/ThemeToggle.vue';
-  import LanguageToggle from '@/components/atoms/themes/LanguageToggle.vue';
+  import ThemeToggle from '@/components/atoms/toggles/ThemeToggle.vue';
+  import LanguageToggle from '@/components/atoms/toggles/LanguageToggle.vue';
 </script>

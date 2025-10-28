@@ -48,7 +48,7 @@
       case 'primary':
       default:
         return `
-        bg-primary text-white
+        bg-bubble-user-bg text-white
         hover:bg-primary-container
         dark:bg-primary-container
         dark:hover:bg-primary-container

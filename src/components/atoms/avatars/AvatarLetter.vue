@@ -1,10 +1,10 @@
 <template>
   <div
     :class="[
-      'flex items-center justify-center rounded-full font-semibold uppercase shadow-sm transition-all duration-300 select-none',
-      backgroundClass,
+      'flex items-center justify-center rounded-full font-semibold text-white uppercase shadow-sm transition-all duration-300 select-none',
       sizeClass,
     ]"
+    :style="{ backgroundColor: backgroundColor }"
   >
     {{ initial }}
   </div>
@@ -15,7 +15,6 @@
 
   const props = defineProps<{
     name: string;
-    bgColor?: string;
     size?: 'sm' | 'md' | 'lg';
   }>();
 
@@ -34,9 +33,14 @@
         return 'w-10 h-10 text-base';
     }
   });
+  function stringToColor(str: string): string {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = Math.abs(hash) % 360;
+    return `hsl(${hue}, 70%, 45%)`;
+  }
 
-  const backgroundClass = computed(() => {
-    if (props.bgColor) return props.bgColor;
-    return 'bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary';
-  });
+  const backgroundColor = computed(() => (props.name ? stringToColor(props.name) : '#9e9e9e'));
 </script>

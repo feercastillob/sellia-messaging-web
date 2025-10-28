@@ -1,77 +1,68 @@
-Sellia Omnichannel Messaging App - Reto Técnico Frontend
+# 💬 Sellia Omnichannel Messaging App — Reto Técnico Frontend
 
-Este proyecto es la solución al Take-Home Coding Challenge para el perfil de Desarrollador Frontend. La aplicación rediseña la plataforma de mensajería omnicanal de Sellia, priorizando la accesibilidad, la ergonomía visual y la adaptabilidad (responsive) para usuarios B2B.
+> **Desafío técnico Frontend** — Rediseño y desarrollo de la plataforma de mensajería omnicanal de **Sellia**, priorizando la **accesibilidad**, la **ergonomía visual** y la **adaptabilidad (responsive)** para usuarios **B2B**.
 
-Stack Tecnológico
+---
 
-Framework: Vue 3 (Composition API & <script setup>)
+## ⚙️ Stack Tecnológico
 
-Estilos: Tailwind CSS (con soporte para Modo Oscuro/Claro basado en clases)
+| Tecnología | Descripción |
+|-------------|--------------|
+| 🧩 **Framework** | [Vue 3](https://vuejs.org/) — Composition API + `<script setup>` |
+| 🎨 **Estilos** | [Tailwind CSS](https://tailwindcss.com/) con soporte de **modo claro/oscuro** |
+| ⚡ **Bundler** | [Vite](https://vitejs.dev/) |
+| 🧠 **Estado global** | [Pinia](https://pinia.vuejs.org/) |
+| 🧪 **Testing** | [Vitest](https://vitest.dev/) + Vue Test Utils + Testing Library |
+| 🧹 **Linting & Format** | ESLint + Prettier |
 
-Bundler: Vite
+---
 
-Testing: Vitest & Vue Test Utils (Testing Library)
+## 🧱 Estructura del Proyecto
 
-Análisis de código: ESLint
+La arquitectura sigue el patrón **Atomic Design**, promoviendo la escalabilidad, reutilización de componentes y facilidad para pruebas unitarias.
 
-Formato: Prettier
 
-Estructura del Proyecto
+---
 
-Se ha optado por una arquitectura modular, siguiendo el patrón Atomic Design para facilitar la escalabilidad, la reutilización de componentes y la implementación de pruebas unitarias.
+## ✨ Características Principales
 
-src/components/atoms: Componentes UI básicos (Botones, Inputs, Toggle de Tema).
+✅ **Simulador de chat completo**, con soporte para mensajes:
+- Texto
+- Imagen
+- Documento
+- Sistema
 
-src/components/molecules: Combinaciones de átomos (e.g., Formulario de Login, Item de la Lista de Clientes).
+🌗 **Modo oscuro / claro dinámico**, persistente con `localStorage`.
+🎨 **Refactor visual completo**, con colores, sombras y tipografía coherentes.
+🧩 **Arquitectura modular** basada en Atomic Design.
+🧠 **Pruebas unitarias actualizadas** tras refactorización.
+⚡ **Desarrollo ágil** con Vite y alias `@/`.
 
-src/components/organisms: Secciones complejas (e.g., Panel Lateral de Clientes, Ventana de Conversación).
+---
 
-src/views/: Contenedores o páginas completas (e.g., Login, MainLayout).
+## 🧰 Scripts Disponibles
 
-src/composables/: Lógica reutilizable (e.g., useAuth, useTheme).
+| Comando | Descripción |
+|----------|-------------|
+| `npm install` | Instala las dependencias del proyecto. |
+| `npm run dev` | Inicia el servidor de desarrollo con recarga en caliente. |
+| `npm run build` | Genera la build de producción en `dist/`. |
+| `npm run preview` | Previsualiza la build de producción localmente. |
+| `npm run test` | Ejecuta las pruebas unitarias con Vitest. |
+| `npm run lint` | Verifica errores de código con ESLint. |
+| `npm run format` | Formatea el código con Prettier. |
 
-src/services/: Capa de abstracción para el consumo de APIs.
+---
 
-Scripts Disponibles
+## 🔐 Credenciales de Acceso Simuladas
 
-Para ejecutar el proyecto:
+> Para acceder desde la vista de **Login**: Usuaio: admin Contraseña: admin123
 
-Comando
+## 👩‍💻 Autor
+**Fernanda Castillo**
+Frontend Developer
+📧 fernanda.castillo@email.com
+---
+> 💡 Proyecto desarrollado como parte del proceso técnico de postulación para **Sellia**, con enfoque en calidad visual, mantenibilidad del código y experiencia de usuario.
 
-Descripción
 
-npm install
-
-Instala todas las dependencias del proyecto.
-
-npm run dev
-
-Inicia el servidor de desarrollo con hot-reloading.
-
-npm run build
-
-Genera los archivos de producción en la carpeta dist.
-
-npm run preview
-
-Previsualiza la build de producción localmente.
-
-npm run test
-
-Ejecuta las pruebas unitarias con Vitest.
-
-npm run lint
-
-Ejecuta ESLint para verificar errores de código.
-
-npm run format
-
-Formatea el código con Prettier.
-
-Credenciales de Acceso Fijas
-
-Para la ventana de Login, se usan las siguientes credenciales simuladas:
-
-Usuario: admin
-
-Contraseña: admin123

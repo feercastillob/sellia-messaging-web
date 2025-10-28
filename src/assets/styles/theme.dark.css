@@ -1,0 +1,36 @@
+@layer base {
+  .dark {
+    --color-primary: oklch(73.1% 0.151 254.2);
+    --color-on-primary: oklch(18.7% 0.026 253.7);
+    --color-secondary: oklch(69.9% 0.041 246.4);
+    --color-on-secondary: oklch(18.7% 0.026 253.7);
+    --color-background: oklch(29.6% 0.015 254.9);
+    --color-surface: oklch(23.4% 0.028 253.2);
+    --color-surface-variant: oklch(31.7% 0.024 255.3);
+    --color-on-surface: oklch(100% 0 0);
+    --color-on-surface-variant: oklch(70.9% 0.027 252.3);
+    --color-outline: oklch(39.5% 0.029 253.9);
+    --color-chat-bg-primary: oklch(17.7% 0.021 254.6);
+    --color-chat-bg-chat: oklch(14.7% 0.021 254.9);
+    --color-chat-surface: oklch(24.7% 0.024 254.3);
+    --color-chat-surface-variant: oklch(21.6% 0.022 254.7);
+    --color-chat-text-primary: oklch(92.5% 0.013 254.1);
+    --color-chat-text-secondary: oklch(66.2% 0.022 254.9);
+    --color-chat-border-outline: oklch(29.4% 0.024 253.2);
+    --color-chat-bubble-user: oklch(32.6% 0.066 166.3);
+    --color-chat-bubble-user-text: oklch(92.5% 0.013 254.1);
+    --color-chat-bubble-client: oklch(26.7% 0.023 254.3);
+    --color-chat-bubble-client-text: oklch(92.5% 0.013 254.1);
+    --color-chat-bubble-system: oklch(29.8% 0.024 259.4);
+    --color-chat-bubble-system-text: oklch(83.7% 0.039 258.3);
+    --color-chat-color-primary: oklch(82.8% 0.174 151.7);
+    --color-chat-color-on-primary: oklch(100% 0 0);
+    --color-bubble-user-bg: oklch(55.2% 0.222 254.7);
+    --color-bubble-user-text: oklch(100% 0 0);
+    --color-bubble-client-bg: oklch(28.8% 0.045 166.5);
+    --color-bubble-client-text: oklch(86.3% 0.096 165.3);
+    --color-system-bg: oklch(34.9% 0.037 269.8);
+    --color-system-text: oklch(88.1% 0.065 260.3);
+    --color-system-border: oklch(53.8% 0.193 261.4);
+  }
+}

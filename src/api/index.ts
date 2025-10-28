@@ -29,6 +29,9 @@ api.interceptors.response.use(
       case 404:
         toast.info('🔍 Recurso no encontrado.');
         break;
+      case 405:
+        toast.error('💥 Error de prueba, endpoint no encontrado.');
+        break;
       case 500:
         toast.error('💥 Error interno del servidor.');
         break;

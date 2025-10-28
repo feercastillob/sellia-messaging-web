@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import AppInput from '@/components/atoms/inputs/AppInput.vue';
   import { useI18n } from 'vue-i18n';
 
   const { t } = useI18n();
@@ -24,23 +23,23 @@
   <div class="space-y-4">
     <AppInput
       :model-value="props.username"
-      @update:model-value="emit('update:username', $event)"
       :label="t('login.username')"
       type="email"
       :placeholder="t('login.placeholderUser')"
       :state="props.usernameState"
       :disabled="props.loading"
+      @update:model-value="emit('update:username', $event)"
       @keyup.enter="emit('submit')"
     />
     <AppInput
       :model-value="props.password"
-      @update:model-value="emit('update:password', $event)"
       :label="t('login.password')"
       type="password"
       :placeholder="t('login.placeholderPass')"
       :state="props.passwordState"
       :message="props.error && props.passwordState === 'error' ? props.error : ''"
       :disabled="props.loading"
+      @update:model-value="emit('update:password', $event)"
       @keyup.enter="emit('submit')"
     />
   </div>

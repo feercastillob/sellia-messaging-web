@@ -1,0 +1,15 @@
+@theme {
+  --font-sans: 'Inter Tight', 'Inter', 'Roboto', 'Helvetica Neue', system-ui, sans-serif;
+  --text-meta: 13px;
+  --text-button: 14px;
+  --text-body: 15px;
+  --text-heading: 16px;
+  --text-system: 13px;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,27 +1,38 @@
 <template>
-  <img
-    :src="currentLogo"
-    alt="Sellia Logo"
-    class="h-10 w-auto transition-all duration-300 select-none"
-    draggable="false"
-  />
+  <div
+    class="flex items-center justify-center transition-all duration-300 select-none"
+    aria-label="Sellia Logo"
+  >
+    <img
+      :src="currentLogo"
+      alt="Sellia Logo"
+      class="h-10 w-auto drop-shadow-sm transition-transform duration-500 hover:scale-105"
+      draggable="false"
+    />
+  </div>
 </template>
+
 <script setup lang="ts">
-  import { ref, computed, onMounted, onUnmounted } from 'vue';
+  import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
   import logoColor from '@/assets/images/png/logo_color_sellia.png';
   import logoWhite from '@/assets/images/png/logo_white_sellia.png';
 
   const isDark = ref(false);
+  let observer: MutationObserver | null = null;
 
   function updateThemeState() {
     isDark.value = document.documentElement.classList.contains('dark');
   }
+
   onMounted(() => {
     updateThemeState();
-    const observer = new MutationObserver(updateThemeState);
+    observer = new MutationObserver(updateThemeState);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-    onUnmounted(() => observer.disconnect());
   });
+
+  onBeforeUnmount(() => {
+    observer?.disconnect();
+  });
+
   const currentLogo = computed(() => (isDark.value ? logoWhite : logoColor));
 </script>

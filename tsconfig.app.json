@@ -15,15 +15,11 @@
     "esModuleInterop": true,
     "noEmit": true,
     "jsx": "preserve",
-
-    /* Configuración de rutas (CLAVE para el error TS2307) */
     "baseUrl": ".",
     "paths": {
-      // Esto mapea '@/' a la carpeta 'src/' para que el editor pueda resolver las importaciones
       "@/*": ["./src/*"]
     }
   },
-
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [
     {

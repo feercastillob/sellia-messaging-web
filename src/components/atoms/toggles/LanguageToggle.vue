@@ -1,24 +1,3 @@
-<template>
-  <button
-    class="border-outline bg-on-primary hover:bg-surface-variant focus:ring-primary dark:border-outline dark:bg-surface dark:hover:bg-surface-variant dark:focus:ring-primary dark:focus:ring-offset-background relative flex h-9 w-20 items-center justify-center overflow-hidden rounded-full border shadow-sm transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-    aria-label="Cambiar idioma"
-    @click="toggleLanguage"
-  >
-    <transition mode="out-in" name="fade">
-      <div :key="language" class="absolute inset-0 flex items-center justify-center gap-2">
-        <img
-          class="h-5 w-5 rounded-full object-cover shadow-sm"
-          :alt="language === 'es' ? 'Español' : 'English'"
-          :src="language === 'es' ? flagEs : flagEn"
-        />
-        <span class="text-on-surface dark:text-on-surface hidden transition-colors sm:inline">
-          {{ language.toUpperCase() }}
-        </span>
-      </div>
-    </transition>
-  </button>
-</template>
-
 <script lang="ts" setup>
   import { ref, onMounted, watch } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -52,6 +31,26 @@
   });
 </script>
 
+<template>
+  <button
+    class="border-outline bg-on-primary hover:bg-surface-variant focus:ring-primary dark:border-outline dark:bg-surface dark:hover:bg-surface-variant dark:focus:ring-primary dark:focus:ring-offset-background relative flex h-9 w-20 items-center justify-center overflow-hidden rounded-full border shadow-sm transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+    aria-label="Cambiar idioma"
+    @click="toggleLanguage"
+  >
+    <transition mode="out-in" name="fade">
+      <div :key="language" class="absolute inset-0 flex items-center justify-center gap-2">
+        <img
+          class="h-5 w-5 rounded-full object-cover shadow-sm"
+          :alt="language === 'es' ? 'Español' : 'English'"
+          :src="language === 'es' ? flagEs : flagEn"
+        />
+        <span class="text-on-surface dark:text-on-surface hidden transition-colors sm:inline">
+          {{ language.toUpperCase() }}
+        </span>
+      </div>
+    </transition>
+  </button>
+</template>
 <style scoped>
   .fade-enter-active,
   .fade-leave-active {

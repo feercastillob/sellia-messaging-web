@@ -1,15 +1,3 @@
-<template>
-  <div
-    :class="[
-      'flex items-center justify-center rounded-full font-semibold text-white uppercase shadow-sm transition-all duration-300 select-none',
-      sizeClass,
-    ]"
-    :style="{ backgroundColor: backgroundColor }"
-  >
-    {{ initial }}
-  </div>
-</template>
-
 <script setup lang="ts">
   import { computed } from 'vue';
 
@@ -44,3 +32,15 @@
 
   const backgroundColor = computed(() => (props.name ? stringToColor(props.name) : '#9e9e9e'));
 </script>
+
+<template>
+  <div
+    :class="[
+      'flex items-center justify-center rounded-full font-semibold text-white uppercase shadow-sm transition-all duration-300 select-none',
+      sizeClass,
+    ]"
+    :style="{ backgroundColor: backgroundColor }"
+  >
+    {{ initial }}
+  </div>
+</template>

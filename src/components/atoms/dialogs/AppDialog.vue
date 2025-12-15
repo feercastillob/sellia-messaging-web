@@ -1,3 +1,14 @@
+<script setup lang="ts">
+  defineProps<{
+    title: string;
+    message: string;
+  }>();
+
+  defineEmits<{
+    (e: 'close'): void;
+  }>();
+</script>
+
 <template>
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
     <div
@@ -17,17 +28,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  defineProps<{
-    title: string;
-    message: string;
-  }>();
-
-  defineEmits<{
-    (e: 'close'): void;
-  }>();
-</script>
 
 <style scoped>
   @keyframes pop {

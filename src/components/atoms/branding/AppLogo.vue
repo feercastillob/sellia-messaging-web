@@ -1,17 +1,3 @@
-<template>
-  <div
-    class="flex items-center justify-center transition-all duration-300 select-none"
-    aria-label="Sellia Logo"
-  >
-    <img
-      :src="currentLogo"
-      alt="Sellia Logo"
-      class="h-10 w-auto drop-shadow-sm transition-transform duration-500 hover:scale-105"
-      draggable="false"
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
   import logoColor from '@/assets/images/png/logo_color_sellia.png';
@@ -36,3 +22,17 @@
 
   const currentLogo = computed(() => (isDark.value ? logoWhite : logoColor));
 </script>
+
+<template>
+  <div
+    class="flex items-center justify-center transition-all duration-300 select-none"
+    aria-label="Sellia Logo"
+  >
+    <img
+      :src="currentLogo"
+      alt="Sellia Logo"
+      class="h-10 w-auto drop-shadow-sm transition-transform duration-500 hover:scale-105"
+      draggable="false"
+    />
+  </div>
+</template>

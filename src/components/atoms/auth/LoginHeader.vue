@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
+  const { t } = useI18n();
+</script>
 <template>
   <header
     class="space-y-2 pb-4 text-center transition-colors duration-300 sm:space-y-3 sm:pb-6 md:text-left"
@@ -13,8 +17,3 @@
     </p>
   </header>
 </template>
-
-<script setup lang="ts">
-  import { useI18n } from 'vue-i18n';
-  const { t } = useI18n();
-</script>

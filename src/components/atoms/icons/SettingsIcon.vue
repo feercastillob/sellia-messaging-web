@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  const props = defineProps<{ class?: string }>();
+</script>
+
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +21,3 @@
     <circle cx="12" cy="12" r="3" />
   </svg>
 </template>
-
-<script setup lang="ts">
-  const props = defineProps<{ class?: string }>();
-</script>
